@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'connect_api.dart';
 
 // Define a Custom Form Widget
 class Search extends StatefulWidget {
@@ -39,16 +40,31 @@ class MyCustomFormState extends State<Search> {
             controller: _searchResult,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            padding: const EdgeInsets.all(16.0),
+            // child: <Widget>[
+            //   IconButton(
+            //     icon: Icon(Icons.search),
+            //     tooltip: 'Open shopping cart',
+            //     onPressed: () {
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => apiRoute()),
+            //       );
+            //       // Implement navigation to shopping cart page here...
+            //       print('Shopping cart opened.');
+            //     },
+            //   ),
+            // ],
             child: RaisedButton(
               onPressed: () {
                 // Validate will return true if the form is valid, or false if
                 // the form is invalid.
                 if (_formKey.currentState.validate()) {
-                  // If the form is valid, we want to show a Snackbar
-                  Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text('Processing Data')));
                   _toggleSearch();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => apiRoute()),
+                  );
                 }
               },
               child: Text('Submit'),

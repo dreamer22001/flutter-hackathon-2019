@@ -48,23 +48,25 @@ class MyStatelessWidget extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DEU BOA! - $search'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            tooltip: 'Open shopping cart',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => apiRoute()),
-              );
-              // Implement navigation to shopping cart page here...
-              print('Shopping cart opened.');
-            },
-          ),
-        ],
+        title: Text('Flutter projects'),
+        // actions: <Widget>[
+        //   IconButton(
+        //     icon: Icon(Icons.search),
+        //     tooltip: 'Open shopping cart',
+        //     // onPressed: () {
+        //     //   Navigator.push(
+        //     //     context,
+        //     //     MaterialPageRoute(builder: (context) => apiRoute()),
+        //     //   );
+        //     //   // Implement navigation to shopping cart page here...
+        //     //   print('Shopping cart opened.');
+        //     // },
+        //   ),
+        // ],
       ),
-      body: Search(search, callback),
+      body: Center(
+        child: Search(search, callback),
+      ),
     );
   }
 }
