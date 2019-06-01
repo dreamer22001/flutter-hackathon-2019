@@ -59,9 +59,9 @@ class apiRoute extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       ListTile(
-                                        leading: const Icon(Icons.album),
+                                        leading: const Icon(Icons.cloud_download),
                                         title: Text(snapshot.data[index].name),
-                                        subtitle: Text('Repo ID is: $snapshot.data[index].id}'),
+                                        subtitle: Text('Repo ID is: ${snapshot.data[index].id}'),
                                       ),
                                       new ButtonTheme.bar(
                                           child: new ButtonBar(
@@ -69,7 +69,7 @@ class apiRoute extends StatelessWidget {
                                                 new FlatButton(
                                                   child: const Text('Acessar repositório'),
                                                   onPressed: () {
-                                                    //_launchURL('https://github.com/${User.name}');
+                                                    // _launchURL('https://github.com/${User.name}');
                                                     print('https://github.com/');
                                                   },
                                                 )
