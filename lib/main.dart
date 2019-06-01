@@ -3,6 +3,7 @@
 // This sample shows adding an action to an [AppBar] that opens a shopping cart.
 
 import 'package:flutter/material.dart';
+import 'search.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,7 +31,7 @@ class MyStatelessWidget extends StatelessWidget {
         title: Text('Ready, Set, Shop!'),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: Icon(Icons.search),
             tooltip: 'Open shopping cart',
             onPressed: () {
               // Implement navigation to shopping cart page here...
@@ -38,7 +39,46 @@ class MyStatelessWidget extends StatelessWidget {
             },
           ),
         ],
+        // child: TextField(
+        //   decoration: InputDecoration(
+        //     border: InputBorder.none,
+        //     hintText: 'Please enter a search term'
+        //   ),
+        // ),
       ),
+      body: Search(),
     );
   }
 }
+
+
+// // Define a Custom Form Widget
+// class MyCustomForm extends StatefulWidget {
+//   @override
+//   MyCustomFormState createState() {
+//     return MyCustomFormState();
+//   }
+// }
+
+// // Define a corresponding State class. This class will hold the data related to
+// // the form.
+// class MyCustomFormState extends State<MyCustomForm> {
+//   // Create a global key that will uniquely identify the Form widget and allow
+//   // us to validate the form
+//   //
+//   // Note: This is a `GlobalKey<FormState>`, not a GlobalKey<MyCustomFormState>!
+//   final _formKey = GlobalKey<FormState>();
+
+//   @override
+//   Widget build(BuildContext context) {
+//     // Build a Form widget using the _formKey we created above
+//     return Form(
+//       key: _formKey,
+//       child: TextFormField(
+//         decoration: InputDecoration(
+//           labelText: 'Enter your username'
+//         ),
+//       ),
+//     );
+//   }
+// }
