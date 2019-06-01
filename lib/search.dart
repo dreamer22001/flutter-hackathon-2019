@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 
 // Define a Custom Form Widget
 class Search extends StatefulWidget {
+  String search;
+  Function(String) callback;
+
+  Search(this.search, this.callback);
+
   @override
   MyCustomFormState createState() {
     return MyCustomFormState();
@@ -43,7 +48,7 @@ class MyCustomFormState extends State<Search> {
                   // If the form is valid, we want to show a Snackbar
                   Scaffold.of(context)
                       .showSnackBar(SnackBar(content: Text('Processing Data')));
-                  _performLogin();
+                  _toggleSearch();
                 }
               },
               child: Text('Submit'),
@@ -54,9 +59,8 @@ class MyCustomFormState extends State<Search> {
     );
   }
 
-  void _performLogin() {
+  void _toggleSearch() {
     String text = _searchResult.text;
-
-    print('login attempt: $text');
+    widget.callback('$text');
   }
 }
