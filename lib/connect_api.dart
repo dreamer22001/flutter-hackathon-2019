@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
+//import 'repo_card.dart';
 
 class User {
   String name;
@@ -39,33 +40,55 @@ class apiRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        title: new Text('Fetch Data Exampleaa'),
+        title: new Text('Fetch Data Examplea'),
       ),
       body: new Container(
-        child: new FutureBuilder<List<User>>(
-          future: fetchUsersFromGitHub(),
-          builder: (context, snapshot) {
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: new FutureBuilder<List<User>>(
+            future: fetchUsersFromGitHub(),
+            builder: (context, snapshot) {
 
-            if (snapshot.hasData) {
-              return new ListView.builder(
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (context, index) {
-                    return new Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          new Text(snapshot.data[index].name,
-                              style: new TextStyle(fontWeight: FontWeight.bold)),
-                          new Divider()
-                        ]
-                    );
-                  }
-              );
-            } else if (snapshot.hasError) {
-              return new Text("${snapshot.error}");
-            }
-            // By default, show a loading spinner
-            return new CircularProgressIndicator();
-          },
+              if (snapshot.hasData) {
+                return new ListView.builder(
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, index) {
+                        return Center(
+                            child: Card(
+                                child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      ListTile(
+                                        leading: const Icon(Icons.album),
+                                        title: Text(snapshot.data[index].name),
+                                        subtitle: Text('Repo ID is: $snapshot.data[index].id}'),
+                                      ),
+                                      new ButtonTheme.bar(
+                                          child: new ButtonBar(
+                                              children: <Widget>[
+                                                new FlatButton(
+                                                  child: const Text('Acessar repositório'),
+                                                  onPressed: () {
+                                                    //_launchURL('https://github.com/${User.name}');
+                                                    print('https://github.com/');
+                                                  },
+                                                )
+                                              ]
+                                          )
+                                      )
+                                    ]
+                                )
+                            )
+                        );
+                    }
+                );
+              } else if (snapshot.hasError) {
+                return new Text("${snapshot.error}");
+              }
+              // By default, show a loading spinner
+              return new CircularProgressIndicator();
+            },
+          ),
         ),
       ),
     );
