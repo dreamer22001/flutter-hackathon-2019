@@ -3,6 +3,11 @@
 // This sample shows adding an action to an [AppBar] that opens a shopping cart.
 
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
+import 'connect_api.dart';
+import 'search.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,18 +32,23 @@ class MyStatelessWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ready, Set, Shop!'),
+        title: Text('DEU BOA!'),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: Icon(Icons.search),
             tooltip: 'Open shopping cart',
             onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => apiRoute()),
+              );
               // Implement navigation to shopping cart page here...
               print('Shopping cart opened.');
             },
           ),
         ],
       ),
+      body: Search(),
     );
   }
 }
